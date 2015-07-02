@@ -2,6 +2,10 @@ dependencies:
   cache_directories:
     - ~/goreq/new_dir
     - new_dir
+    - node_modules
+    - ~/goreq/node_modules
 
   pre:
     - mkdir new_dir && touch new_dir/foo
+    - pwd
+    - npm install grunt
