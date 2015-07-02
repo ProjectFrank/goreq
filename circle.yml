@@ -1,0 +1,7 @@
+dependencies:
+  cache_directories:
+    - ~/goreq/new_dir
+    - new_dir
+
+  pre:
+    - mkdir new_dir && touch new_dir/foo
