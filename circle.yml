@@ -1,6 +1,6 @@
 machine:
   environment:
-    GOPATH: ~/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$GOPATH
+    GOPATH: /home/ubuntu/.go_project:$GOPATH
 dependencies:
   cache_directories:
     - ~/goreq/new_dir
