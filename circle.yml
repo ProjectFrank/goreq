@@ -1,6 +1,4 @@
 dependencies:
-  override:
-    - echo "mess things up"
   cache_directories:
     - ~/goreq/new_dir
     - new_dir
