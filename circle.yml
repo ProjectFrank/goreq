@@ -1,7 +1,7 @@
 machine:
   environment:
     GOPATH: /home/ubuntu/.go_project:$GOPATH
-    example: $(case $CIRCLE_NODE_INDEX in 0) 0 ;; 1) 1;; esac))
+    example: $(case $CIRCLE_NODE_INDEX in 0) 0 ;; 1) 1;; esac)
 dependencies:
   cache_directories:
     - ~/goreq/new_dir
