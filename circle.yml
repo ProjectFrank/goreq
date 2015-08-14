@@ -1,6 +1,9 @@
 machine:
+  pre:
+    - sudo rm -rf /usr/local/go
+    - curl -o go.tar.gz https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
+    - tar -C /usr/local -xzf go.tar.gz
   environment:
-    GOPATH: /home/ubuntu/.go_project:$GOPATH
     example: \`case $CIRCLE_NODE_INDEX in 0) 0 ;; 1) 1;; esac\`
 dependencies:
   cache_directories:
