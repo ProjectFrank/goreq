@@ -17,7 +17,7 @@ dependencies:
     - ~/go1.5.1.linux-amd64.tar.gz
   override:
     - mkdir -p $HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-    - ln -fs ~/$CIRCLE_PROJECT_REPONAME $HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME
+    - ln -fs ~/$CIRCLE_PROJECT_REPONAME/ $HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
     - ls $HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
     - |
       echo 'export GOPATH=$HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$GOPATH' >> ~/.circlerc
