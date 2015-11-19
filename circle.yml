@@ -1,13 +1,26 @@
-machine:
-  pre:
-    - sudo rm -rf /usr/local/go
-    - curl -o go1.4.2.linux-amd64.tar.gz https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
-    - sudo tar -C /usr/local -xzf go1.4.2.linux-amd64.tar.gz
-  environment:
-    example: \`case $CIRCLE_NODE_INDEX in 0) 0 ;; 1) 1;; esac\`
+# machine:
+#   pre:
+#     - sudo rm -rf /usr/local/go
+#     - curl -o go1.4.2.linux-amd64.tar.gz https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
+#     - sudo tar -C /usr/local -xzf go1.4.2.linux-amd64.tar.gz
+#   environment:
+#     example: \`case $CIRCLE_NODE_INDEX in 0) 0 ;; 1) 1;; esac\`
+# dependencies:
+#   cache_directories:
+#     - ~/goreq/new_dir
+#     - new_dir
+#     - node_modules
+#     - ~/goreq/node_modules
+
 dependencies:
   cache_directories:
-    - ~/goreq/new_dir
-    - new_dir
-    - node_modules
-    - ~/goreq/node_modules
+    - ~/go1.5.1.linux-amd64.tar.gz
+  override:
+    - mkdir -p $HOME/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+    - ln -s $HOME/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME ~/$CIRCLE_PROJECT_REPONAME
+    - |
+      echo 'export GOPATH=$GOPATH:$HOME/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME' >> ~/.circlerc
+    - go get -t -d -v -u ./...:
+        pwd: ~/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+    - go build -v:
+        pwd: ~/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
