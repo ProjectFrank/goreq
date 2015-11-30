@@ -22,6 +22,7 @@ dependencies:
     - |
       echo 'export GOPATH=$HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$GOPATH' >> ~/.circlerc
     - echo $GOPATH
-    - cd ~/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME; go get -t -d -v ./...
+    - go get -t -d -v ./...:
+        pwd: ../.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
     - pwd; go build -v:
         pwd: ../.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
