@@ -1,8 +1,8 @@
-machine:
-  pre:
-    - sudo rm -rf /usr/local/go
-    - curl -o go1.5.1.linux-amd64.tar.gz https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz
-    - sudo tar -C /usr/local -xzf go1.5.1.linux-amd64.tar.gz
+# machine:
+#  pre:
+    # - sudo rm -rf /usr/local/go
+    # - curl -o go1.5.1.linux-amd64.tar.gz https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz
+    # - sudo tar -C /usr/local -xzf go1.5.1.linux-amd64.tar.gz
 #   environment:
 #     example: \`case $CIRCLE_NODE_INDEX in 0) 0 ;; 1) 1;; esac\`
 # dependencies:
@@ -12,16 +12,16 @@ machine:
 #     - node_modules
 #     - ~/goreq/node_modules
 
-dependencies:
-  cache_directories:
-    - ~/go1.5.1.linux-amd64.tar.gz
-  override:
-    - mkdir -p $HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME
-    - ln -fs $HOME/$CIRCLE_PROJECT_REPONAME $HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-    - ls $HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-    - |
-      echo 'export GOPATH=$HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$GOPATH' >> ~/.circlerc
-    - echo $GOPATH
-    - cd ~/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME && go get -t -d -v ./...
-    - pwd; go build -v:
-        pwd: ../.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+# dependencies:
+  # cache_directories:
+  #   - ~/go1.5.1.linux-amd64.tar.gz
+  # override:
+  #   - mkdir -p $HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME
+  #   - ln -fs $HOME/$CIRCLE_PROJECT_REPONAME $HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+  #   - ls $HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+  #   - |
+  #     echo 'export GOPATH=$HOME/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME:$GOPATH' >> ~/.circlerc
+  #   - echo $GOPATH
+  #   - cd ~/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME && go get -t -d -v ./...
+  #   - pwd; go build -v:
+  #       pwd: ../.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
