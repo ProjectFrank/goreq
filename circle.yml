@@ -34,7 +34,6 @@ dependencies:
     - echo $CIRCLE_PROJECT_REPONAME
     - echo $CIRCLE_PROJECT_USERNAME
     - ls ../.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-    - go get -t -d -v -u ./...:
-        pwd: ../.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+    - cd ~/.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME && go get -t -d -v -u ./...
     - go build -v:
         pwd: ../.go_project/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
